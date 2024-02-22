@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        profilePicture: {
+            type: String,
+            default: "https://cafefcdn.com/thumb_w/640/203337114487263232/2022/3/3/photo1646280815645-1646280816151764748403.jpg",
+        }
     }, { timestamps: true }
 );
 
