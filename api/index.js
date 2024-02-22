@@ -2,6 +2,8 @@ import epxress from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoutes from "./routes/user.route.js";
+import authRoutes from "./routes/auth.route.js";
+
 dotenv.config();
 
 mongoose.connect(process.env.MONGO)
@@ -9,9 +11,11 @@ mongoose.connect(process.env.MONGO)
     .catch((err) => console.log(err))
 
 const app = epxress();
+app.use(epxress.json());
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000!");
 });
 
 app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);

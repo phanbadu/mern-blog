@@ -1,4 +1,3 @@
-
-export const test = (req, res) => {
+export const test = async (req, res) => {
     res.json({ mes:"Hello word"} );
 };
