@@ -49,27 +49,27 @@ export default function DashPosts() {
         }
     };
 
-    // const handleDeletePost = async () => {
-    //     setShowModal(false);
-    //     try {
-    //         const res = await fetch(
-    //             `/api/post/deletepost/${postIdToDelete}/${currentUser._id}`,
-    //             {
-    //                 method: 'DELETE',
-    //             }
-    //         );
-    //         const data = await res.json();
-    //         if (!res.ok) {
-    //             console.log(data.message);
-    //         } else {
-    //             setUserPosts((prev) =>
-    //                 prev.filter((post) => post._id !== postIdToDelete)
-    //             );
-    //         }
-    //     } catch (error) {
-    //         console.log(error.message);
-    //     }
-    // };
+    const handleDeletePost = async () => {
+        setShowModal(false);
+        try {
+            const res = await fetch(
+                `/api/post/deletepost/${postIdToDelete}/${currentUser._id}`,
+                {
+                    method: 'DELETE',
+                }
+            );
+            const data = await res.json();
+            if (!res.ok) {
+                console.log(data.message);
+            } else {
+                setUserPosts((prev) =>
+                    prev.filter((post) => post._id !== postIdToDelete)
+                );
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
 
     return (
         <div className='w-full table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
@@ -145,7 +145,7 @@ export default function DashPosts() {
             ) : (
                 <p>You have no posts yet!</p>
             )}
-            {/* <Modal
+            <Modal
                 show={showModal}
                 onClose={() => setShowModal(false)}
                 popup
@@ -168,7 +168,7 @@ export default function DashPosts() {
                         </div>
                     </div>
                 </Modal.Body>
-            </Modal> */}
+            </Modal>
         </div>
     );
 }
